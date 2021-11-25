@@ -1,0 +1,22 @@
+<div class="container">
+<h1 class="text-center">My <%= @list.name %> Bookmark <%= link_to "", new_list_bookmark_path(@list), class: "fas fa-plus"  %></h1>
+<div class="row row-cols-1 row-cols-md-3 my-3">
+<% @list.movies.each do |movie| %>
+<% @bookmark = Bookmark.find_by_movie_id(movie.id) %>
+  <div class="col mb-4 card-group">
+    <div class="card">
+      <img src="<%= movie.poster_url %>" class="card-img-top img-fluid">
+      <div class="card-body">
+        <h5 class="card-title"><%= movie.title %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= movie.rating %> ⭐️</h6>
+        <p class="card-text"><small><%= movie.overview.truncate(100) %></small></p>
+        <p class="card-text text-muted"><small>"<%= movie.bookmarks.first.comment %>"</small></p>
+      </div>
+      <div class="card-footer bg-transparent text-right">
+        <%= link_to "Delete Movie", bookmark_path(@bookmark), class: "text-danger", method: :delete, data: { confirm: "Are you sure?" }  %>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
+</div>

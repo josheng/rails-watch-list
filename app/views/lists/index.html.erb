@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="cards">
+  <% @lists.each do |list| %>
+    <%= link_to list_path(list) do %>
+    <div class="card-category my-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.list_url %>)">
+      <%= list.name %>
+    </div>
+    <% end %>
+  <% end %>
+  </div>
+</div>

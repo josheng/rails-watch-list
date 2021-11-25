@@ -12,6 +12,10 @@
   </head>
 
   <body>
+  <nav class="navbar navbar-light bg-dark">
+    <%= link_to "Movies", root_path  %>
+    <%= link_to "New List", new_list_path, class: "btn btn-outline-success my-2 my-sm-0"   %>
+  </nav>
     <%= yield %>
   </body>
 </html>
