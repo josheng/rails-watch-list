@@ -13,7 +13,9 @@
 
   <body>
   <nav class="navbar navbar-light bg-dark">
-    <%= link_to "Movies", root_path  %>
+    <%= link_to root_path  do %>
+      <i class="fas fa-film fa-lg "></i>
+    <% end %>
     <%= link_to "New List", new_list_path, class: "btn btn-outline-success my-2 my-sm-0"   %>
   </nav>
     <%= yield %>
