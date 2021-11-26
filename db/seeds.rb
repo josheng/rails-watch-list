@@ -13,18 +13,20 @@ Movie.destroy_all
 
 puts "Seeding the DB 🌱"
 
-url = "http://tmdb.lewagon.com/movie/popular"
-    # answer_serialized = URI.open(url).read
-movies = URI.parse(url).open.read
-movie_list = JSON.parse(movies)
+3.times do |index|
+  url = "http://tmdb.lewagon.com/movie/popular?&page=#{index + 1}"
+  # answer_serialized = URI.open(url).read
+  movies = URI.parse(url).open.read
+  movie_list = JSON.parse(movies)
 
-movie_list["results"].each do |movie|
-  Movie.create!(
-    title: movie["title"],
-    overview: movie["overview"],
-    poster_url: "https://image.tmdb.org/t/p/w300#{movie["poster_path"]}",
-    rating: movie["vote_average"]
-  )
+  movie_list["results"].each do |movie|
+    Movie.create!(
+      title: movie["title"],
+      overview: movie["overview"],
+      poster_url: "https://image.tmdb.org/t/p/w300#{movie["poster_path"]}",
+      rating: movie["vote_average"]
+    )
+  end
 end
 
 puts "Completed ✅"
